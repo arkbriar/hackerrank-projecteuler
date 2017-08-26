@@ -9,7 +9,7 @@ It is originally hosted on https://projecteuler.net/. However, part of the probl
 
 ## What're in this repo
 
-Here are some codes of the problems [C++] I have resolved. I'm sorry that there are little/none comments in my codes. 
+Here are some codes of the problems [C++] I have resolved. I'm sorry that there are few/none comments in my codes. 
 
 But if you are interested in the thoughts of them, you can visit my blog (https://blog.crazyark.me) (all in Chinese and maybe I will port some of my posts into English later). 
 
