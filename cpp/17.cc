@@ -42,7 +42,7 @@ string write(long n) {
         auto part = write_in_thousand(n % 1000);
         if (!part.empty()) {
             if (x > 1) res = mp.at(x) + " " + res;
-            res = write_in_thousand(n % 1000) + " " + res;
+            res = part + " " + res;
         }
 
         n /= 1000;
