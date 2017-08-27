@@ -36,7 +36,7 @@ bool __select_k_n(std::vector<int>& last, int k, int n, bool unsafe) {
     std::vector<int>& st = unsafe ? last : _st;
 
     auto l = n;
-    while (!st.empty() && l >= n) {
+    while (!st.empty() && l >= n - 1) {
         l = st.back();
         st.pop_back();
     }
@@ -48,7 +48,7 @@ bool __select_k_n(std::vector<int>& last, int k, int n, bool unsafe) {
     return true;
 }
 
-// Get the next selection (n, k), with elements distinct or not
+// Get the next unordered selection of (n, k), with elements distinct or not
 // will return the first selection when last is empty
 //
 // Use of unsafe can avoid copy when doing the next selection and improve the performance,
