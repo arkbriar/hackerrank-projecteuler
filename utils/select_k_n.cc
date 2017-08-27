@@ -3,6 +3,7 @@
 
 bool __select_k_n_distinct(std::vector<int>& last, int k, int n, bool unsafe) {
     if (last.empty()) {
+        last.reserve(k);
         last.push_back(0);
         while (int(last.size()) != k) last.push_back(last.back() + 1);
         return true;
@@ -27,6 +28,7 @@ bool __select_k_n_distinct(std::vector<int>& last, int k, int n, bool unsafe) {
 
 bool __select_k_n(std::vector<int>& last, int k, int n, bool unsafe) {
     if (last.empty()) {
+        last.reserve(k);
         while (int(last.size()) != k) last.push_back(0);
         return true;
     }
