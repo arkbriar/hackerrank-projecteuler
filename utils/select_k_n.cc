@@ -1,7 +1,7 @@
 #include <vector>
 #include <cassert>
 
-bool __select_k_n_distinct(std::vector<int>& last, int k, int n, bool unsafe) {
+static inline bool __select_k_n_distinct(std::vector<int>& last, int k, int n, bool unsafe) {
     if (last.empty()) {
         last.reserve(k);
         last.push_back(0);
@@ -26,7 +26,7 @@ bool __select_k_n_distinct(std::vector<int>& last, int k, int n, bool unsafe) {
     return true;
 }
 
-bool __select_k_n(std::vector<int>& last, int k, int n, bool unsafe) {
+static inline bool __select_k_n(std::vector<int>& last, int k, int n, bool unsafe) {
     if (last.empty()) {
         last.reserve(k);
         while (int(last.size()) != k) last.push_back(0);
