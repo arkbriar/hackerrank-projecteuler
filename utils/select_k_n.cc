@@ -56,9 +56,11 @@ bool __select_k_n(std::vector<int>& last, int k, int n, bool unsafe) {
 // Use of unsafe can avoid copy when doing the next selection and improve the performance,
 // but `last` will be empty after the last selection
 bool select_k_n(std::vector<int>& last, int k, int n, bool distinct = false, bool unsafe = true) {
-    assert(k > 0 && n >= k && (last.empty() || last.size() == k));
-    if (distinct)
+    assert(k > 0 && n > 0 && (last.empty() || last.size() == k));
+    if (distinct) {
+        assert(n >= k);
         return __select_k_n_distinct(last, k, n, unsafe);
-    else
+    } else {
         return __select_k_n(last, k, n, unsafe);
+    }
 }
