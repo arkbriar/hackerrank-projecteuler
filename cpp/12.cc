@@ -30,30 +30,19 @@ void fill_primes() {
     }
 }
 
-unordered_map<int, int> decomposition(int m) {
-    unordered_map<int, int> pf;
-    for (int i = 0; i < NP && primes[i] * primes[i] <= m; ++i) {
-        long p = primes[i];
-        while (m % p == 0) {
-            pf[p]++;
-            m /= p;
-        }
-    }
-    if (m != 1) pf[m] ++;
-    return pf;
-}
-
-int divisors(int n) {
-    auto lp = decomposition(n), rp = decomposition(n + 1);
-    for (auto &e : rp) {
-        lp[e.first] += e.second;
-    }
-    lp[2]--;
-
+int special_divisors(int n) {
+    if (!(n & 1)) n >>= 1;
     int res = 1;
-    for (auto &e : lp) {
-        res *= e.second + 1;
+    for (int i = 0; i < NP && primes[i] * primes[i] <= n; ++i) {
+        long p = primes[i];
+        int c = 0;
+        while (n % p == 0) {
+            c++;
+            n /= p;
+        }
+        res *= c + 1;
     }
+    if (n != 1) res *= 2;
     return res;
 }
 
@@ -67,11 +56,14 @@ int main() {
         int n;
         cin >> n;
 
-        for (int i = 1; ; ++i) {
-            if (divisors(i) > n) {
+        // runs 10 times faster than the older version
+        for (int i = 1, last = 1;; ++i) {
+            auto tmp = special_divisors(i + 1);
+            if (tmp * last > n) {
                 cout << i * (i + 1) / 2 << endl;
                 break;
             }
+            last = tmp;
         }
     }
 
